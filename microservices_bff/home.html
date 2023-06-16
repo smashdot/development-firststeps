@@ -1,0 +1,30 @@
+<html>
+  <body>
+    <form>
+      <h1>Welcome!</h1>
+      <label for="name">Name:</label>
+      <input id="name" type="text" name="name"/>
+      <br/><br/>
+      <button style="padding: 1em 2em">Say Hello</button>
+    </form>
+    <h1 id="result"></h1>
+    <script>
+      const form = document.querySelector('form');
+      const nameInput = document.querySelector('#name');
+      const result = document.querySelector('#result');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        fetch('http://localhost:4000/sayhello?name=' + nameInput.value)
+          .then(res => res.json())
+          .then(data => {
+            if (!data.message) return;
+
+            form.remove();
+            result.innerHTML = data.message;
+          });
+      });
+
+    </script>
+  </body>
+</html>

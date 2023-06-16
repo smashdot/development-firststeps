@@ -1,0 +1,22 @@
+{
+  "name": "microservices",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "servers": "node ./services/greetings.js & node ./services/localization.js & node frontend.js & node backend_bff.js &",
+    "terminate": "pkill -f \"node ./services/greetings.js\" && pkill -f \"node ./services/localization.js\" && pkill -f \"node frontend.js\" && pkill -f \"node backend_bff.js\"",
+    "frontend": "nodemon frontend.js",
+    "backend": "nodemon backend.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
